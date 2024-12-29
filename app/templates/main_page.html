@@ -1,0 +1,116 @@
+<!-- templates/main_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        h2 {
+            border-top: 2px solid #007BFF;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .message-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Main Page</h1>
+
+    <h2>Section 1: API</h2>
+    <h3>Departments</h3>
+    <ul>
+        <li><a href="/get_all_departments">Departments list</a></li>
+        <li><a href="#" onclick="get_message('/import_departments_csv'); return false;">Import Departments</a></li>
+        <li><a href="#" onclick="get_message('/delete_all_departments'); return false;">Delete Departments</a></li>
+    </ul>
+
+    <h3>Jobs</h3>
+    <ul>
+        <li><a href="/get_all_jobs">Jobs list</a></li>
+        <li><a href="#" onclick="get_message('/import_jobs_csv'); return false;">Import Jobs</li>
+        <li><a href="#" onclick="get_message('/delete_all_jobs'); return false;">Delete Jobs</a></li>
+    </ul>
+
+    <h3>Employees</h3>
+    <ul>
+        <li><a href="/get_all_employees">Employees list</a></li>
+        <li><a href="/get_employees_missing_info">Employees with missing information</a></li>
+        <li><a href="#" onclick="get_message('/import_employees_csv'); return false;">Import Employees</a></li>
+        <li><a href="#" onclick="get_message('/delete_all_employees'); return false;">Delete Employees</a></li>
+    </ul>
+
+    <p></p>
+
+    <h2>Section 2: SQL</h2>
+    <ul>
+        <li><a href="/recruitments">Recruitments per quarter</a></li>
+        <li><a href="/people_by_departments">People by department</a></li>
+    </ul>
+    <div class="message-container" id="messageContainer"></div>
+    <script>
+        function get_message(path) {
+            fetch(path)
+                .then(response => response.json())
+                .then(data => {
+                    showMessage(data.message);
+                })
+                .catch(error => {
+                    showMessage('Error.');
+                });
+        }
+    
+        function showMessage(message) {
+            var messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = message;
+            messageContainer.style.display = 'block';
+    
+            setTimeout(function() {
+                messageContainer.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
