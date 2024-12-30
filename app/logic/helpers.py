@@ -21,7 +21,11 @@ def import_csv(db, model, csv_path: str, columns: list):
             data = list(reader)
 
             for row in data:
-                record_data = {columns[i]: (int(row[i]) if row[i].isdigit() else row[i]) for i in range(len(columns))}
+                record_data = {
+                    columns[i]: (int(row[i]) if row[i].isdigit() 
+                                 else (None if row[i].strip() == '' else row[i])) 
+                                 for i in range(len(columns))
+                }
                 if not record_exists_by_id(db.session, model, record_data['id']):
                     record = model(**record_data)
                     db.session.add(record)
