@@ -78,7 +78,7 @@ class Config:
 
 Open a terminal and go to your project root folder, then execute this command:
 ```bash
-py .\app\__init_.py
+python .\app\__main__.py
 ```
 
 After that, in your browser go to **http://127.0.0.1:5000/**. Now you can interact with the application.
