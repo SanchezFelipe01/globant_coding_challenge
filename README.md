@@ -12,8 +12,8 @@ Select a folder to store the code, the use the following command to clone the re
 ```bash
 git clone https://github.com/SanchezFelipe01/globant_coding_challenge.git
 ```
-
-## Database Setup
+## Traditional way
+### Database Setup
 
 1. **Install PostgreSQL:**
    Ensure that PostgreSQL is installed on your machine. You can download it from the [PostgreSQL Official Website](https://www.postgresql.org/download/).
@@ -24,7 +24,7 @@ git clone https://github.com/SanchezFelipe01/globant_coding_challenge.git
 3. **Username and Password:**
    Make sure you have a user and password with sufficient privileges to access and modify the database you created.
 
-## Setting up a Virtual Environment
+### Setting up a Virtual Environment
 
 It's recommended to set up a virtual environment to manage project dependencies. Follow these steps:
 
@@ -53,7 +53,7 @@ It's recommended to set up a virtual environment to manage project dependencies.
     .\venv\Scripts\Activate
     ```
 
-## Installing Dependencies
+### Installing Dependencies
 
 Use the following command to install the project dependencies. It's recommended to set up a virtual environment before installing dependencies.
 
@@ -61,7 +61,7 @@ Use the following command to install the project dependencies. It's recommended 
 pip install -r requirements.txt
 ```
 
-## Setting up the `db_config.py` File
+### Setting up the `db_config.py` File
 
 The `db_config.py` file contains the connection information for the database, modify it if necessary.
 
@@ -74,11 +74,28 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 ```
 
-## Start the application
+### Start the application
 
 Open a terminal and go to your project root folder, then execute this command:
 ```bash
 python .\app\__main__.py
 ```
 
+After that, in your browser go to **http://127.0.0.1:5000/**. Now you can interact with the application.
+
+## Using Docker
+alternatively, you can use docker to build the application in less steps (you need docker to be installed in your computer):
+
+1. Once you have cloned the repository, go to the root folder
+```bash
+cd /../../globant_coding_challenge
+```
+2. Use the following command to build the docker image
+```bash
+docker-compose build
+```
+3. Execute the container
+```bash
+docker-compose up
+```
 After that, in your browser go to **http://127.0.0.1:5000/**. Now you can interact with the application.
