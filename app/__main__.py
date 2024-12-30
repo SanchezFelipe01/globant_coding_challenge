@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template
 from config.db_config import Config
 from models.models import db, Department, Job, Employee
-from logic import departments_crud, jobs_crud, employees_crud
+from logic import departments_crud, jobs_crud, employees_crud, custom_queries
 
 
 app = Flask(__name__)
@@ -75,7 +75,13 @@ def delete_all_employees():
 
 ### QUERIES ###
 
+@app.route('/recruitments')
+def get_quarterly_recruitments():
+    return custom_queries.recruitments_by_quarter(db, Department, Job, Employee)
 
+@app.route('/people_by_departments')
+def get_people_by_departments():
+    return custom_queries.people_by_department(db, Department, Employee)
 
 ### QUERIES ###
 

@@ -29,7 +29,7 @@ def get_employees_with_missing_info(employee):
             )
         ).all()
         return render_template('employees.html', 
-                               employees=employees, 
+                               records=employees, 
                                title='Employees with missing information')
     except Exception:
         return render_template('employees.html', 
