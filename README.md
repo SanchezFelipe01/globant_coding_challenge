@@ -10,7 +10,7 @@ Follow the next steps to execute the project:
 
 Select a folder to store the code, the use the following command to clone the repository:
 ```bash
-git clone https://github.com/SanchezFelipe01/code_challenge.git
+git clone https://github.com/SanchezFelipe01/globant_coding_challenge.git
 ```
 
 ## Database Setup
